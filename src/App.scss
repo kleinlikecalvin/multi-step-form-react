@@ -6,11 +6,25 @@ $light-blue: hsl(206, 94%, 87%);
 $strawberry: hsl(354, 84%, 57%);
 $cool-grey: hsl(231, 11%, 63%);
 $light-grey: hsl(229, 24%, 87%);
-$magnolia: hsl(217, 100%, 97%);
 $alabaster: hsl(231, 100%, 99%);
 $white: hsl(0, 0%, 100%);
 
+// Stylings
+$border-rad: 10px;
+
 .App {
-  text-align: center;
   font-family: "Ubuntu", "Helvetica Neue", sans-serif;
+  border-radius: $border-rad;
+  box-shadow: 10px 10px 10px grey;
+  width: 90%;
+  max-width: 1100px;
+  margin: 100px auto;
+  background-color: $alabaster;
+  padding: 20px;
+  .steps {
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+    border-radius: $border-rad;
+  }
 }
