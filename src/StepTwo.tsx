@@ -1,7 +1,7 @@
 import React from "react";
 export default function StepTwo() {
   return (
-    <form>
+    <form className="StepTwo">
       <h1>Select your plan</h1>
       <p>You have the option of monthly or yearly billing.</p>
       <div className="options">
@@ -14,7 +14,14 @@ export default function StepTwo() {
         <Plan icon="" planName="Advanced" price="$" discountLine={""} />
         <Plan icon="" planName="Pro" price="$" discountLine={""} />
       </div>
-      {/* add checkbox toggle dealie */}
+      <div className="toggle-container">
+        <strong>monthly</strong>
+        <label className="toggle">
+          <input type="checkbox" />
+          <span className="slider"></span>
+        </label>
+        <strong>yearly</strong>
+      </div>
       <button>Go Back</button>
       <button>Next Step</button>
     </form>

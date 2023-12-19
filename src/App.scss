@@ -10,21 +10,64 @@ $alabaster: hsl(231, 100%, 99%);
 $white: hsl(0, 0%, 100%);
 
 // Stylings
-$border-rad: 10px;
+$border-radius: 10px;
 
 .App {
   font-family: "Ubuntu", "Helvetica Neue", sans-serif;
-  border-radius: $border-rad;
+  border-radius: $border-radius;
   box-shadow: 10px 10px 10px grey;
   width: 90%;
   max-width: 1100px;
   margin: 100px auto;
   background-color: $alabaster;
   padding: 20px;
-  .steps {
-    display: flex;
-    flex-direction: column;
+
+  .WizardStepInfo {
     max-width: 30%;
-    border-radius: $border-rad;
+    border-radius: $border-radius;
+  }
+
+  .StepTwo {
+    .toggle-container {
+      .toggle {
+        position: relative;
+        display: inline-block;
+        margin: 20px;
+        width: 40px;
+        height: 20px;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        border-radius: 34px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $marine-blue;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        left: 3px;
+        bottom: 3px;
+        border-radius: 50%;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        transform: translateX(20px);
+      }
+    }
   }
 }
