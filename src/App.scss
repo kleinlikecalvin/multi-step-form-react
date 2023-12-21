@@ -7,7 +7,6 @@ $strawberry: hsl(354, 84%, 57%);
 $cool-grey: hsl(231, 11%, 63%);
 $light-grey: hsl(229, 24%, 87%);
 $alabaster: hsl(231, 100%, 99%);
-$white: hsl(0, 0%, 100%);
 
 // Stylings
 $border-radius: 10px;
@@ -18,17 +17,70 @@ $border-radius: 10px;
   box-shadow: 10px 10px 10px grey;
   width: 90%;
   max-width: 1100px;
+  max-height: 565px;
   margin: 100px auto;
   background-color: $alabaster;
-  padding: 20px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 274px 2fr;
+  gap: 80px;
 
-  .WizardStepInfo {
-    max-width: 30%;
+  .steps-preview {
+    background: url(./assets/images/bg-sidebar-desktop.svg);
+    background-repeat: no-repeat;
+    height: 500px;
+    margin: 0;
+    padding: 30px;
+    color: white;
     border-radius: $border-radius;
+    list-style: none;
+    .StepPreview {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      justify-content: start;
+      margin: 0 0 30px 0;
+      // &.active .step {
+      //   background-color: $light-blue;
+      //   border: 1px solid $light-blue;
+      //   color: $marine-blue;
+      // }
+      .step {
+        border: 1px solid white;
+        border-radius: 50%;
+        padding: 10px 14px;
+      }
+      div > * {
+        margin: 0 0 5px 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .name {
+        color: $light-grey;
+        font-size: 14px;
+      }
+    }
   }
 
-  .StepTwo {
+  .SelectPlan {
+    display: grid;
+    grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
+    justify-items: start;
+    // align-items: stretch;
+    border: 1px solid red;
+    .plans {
+      .Plan {
+        border: 1px solid $light-grey;
+        padding: 10px;
+        border-radius: $border-radius;
+      }
+    }
     .toggle-container {
+      background: $alabaster;
+      padding: 15px;
+      border: 1px solid red;
+      border-radius: $border-radius;
+      width: 100%;
       .toggle {
         position: relative;
         display: inline-block;
@@ -36,7 +88,6 @@ $border-radius: 10px;
         width: 40px;
         height: 20px;
       }
-
       .slider {
         position: absolute;
         cursor: pointer;
@@ -48,21 +99,19 @@ $border-radius: 10px;
         background-color: $marine-blue;
         -webkit-transition: 0.4s;
         transition: 0.4s;
+        &:before {
+          position: absolute;
+          content: "";
+          height: 14px;
+          width: 14px;
+          left: 3px;
+          bottom: 3px;
+          border-radius: 50%;
+          background-color: white;
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+        }
       }
-
-      .slider:before {
-        position: absolute;
-        content: "";
-        height: 14px;
-        width: 14px;
-        left: 3px;
-        bottom: 3px;
-        border-radius: 50%;
-        background-color: white;
-        -webkit-transition: 0.4s;
-        transition: 0.4s;
-      }
-
       input:checked + .slider:before {
         -webkit-transform: translateX(20px);
         -ms-transform: translateX(20px);
