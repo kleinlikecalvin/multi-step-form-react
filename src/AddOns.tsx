@@ -1,9 +1,24 @@
 import React from "react";
-export default function AddOns() {
+import StepHeader from "./StepHeader";
+import NavButtons from "./NavButtons";
+export default function AddOns({
+  cart,
+  updateCart,
+  updateActive,
+}: {
+  cart: {
+    plan: { name: string };
+    addOns?: { name: string; monthlyCost: number; annualCost: number }[];
+  };
+  updateCart: Function;
+  updateActive: Function;
+}) {
   return (
     <form>
-      <h1>Pick add-ons</h1>
-      <p>Add-ons help enhanve your gaming experience</p>
+      <StepHeader
+        title="Pick add-ons"
+        desc="Add-ons help enhanve your gaming experience"
+      />
       <fieldset>
         <input type="checkbox" name="online-service" />
         <label htmlFor="online-service">Online service</label>
@@ -22,8 +37,14 @@ export default function AddOns() {
         <small>Custom theme on your profile</small>
         {/* dynamic price for monthly/yearly toggle */}
       </fieldset>
-      <button>Go Back</button>
-      <button type="submit">Next Step</button>
+      <NavButtons
+        backClick={(e) => {
+          e.preventDefault();
+        }}
+        nextClick={(e) => {
+          e.preventDefault();
+        }}
+      />
     </form>
   );
 }
