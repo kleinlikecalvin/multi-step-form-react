@@ -1,7 +1,7 @@
 // Colors
 $marine-blue: hsl(213, 96%, 18%);
 $purple-blue: hsl(243, 100%, 62%);
-$pastel-blue: hsl(228, 100%, 84%);
+$pastel-blue: hsla(228, 69%, 91%, 0.382);
 $light-blue: hsl(206, 94%, 87%);
 $strawberry: hsl(354, 84%, 57%);
 $cool-grey: hsl(231, 11%, 63%);
@@ -10,22 +10,27 @@ $alabaster: hsl(231, 100%, 99%);
 
 // Stylings
 $border-radius: 10px;
+$font: "Ubuntu", "Helvetica Neue", sans-serif;
+$padding: 20px;
 
 .App {
-  font-family: "Ubuntu", "Helvetica Neue", sans-serif;
+  font-family: $font;
   border-radius: $border-radius;
-  box-shadow: 10px 10px 10px grey;
-  width: 90%;
-  max-width: 1100px;
+  box-shadow: 10px 10px 10px rgba(211, 211, 211, 0.643);
+  max-width: 1000px;
   max-height: 565px;
   margin: 100px auto;
   background-color: $alabaster;
-  padding: 15px;
+  padding: $padding;
   display: grid;
-  grid-template-columns: 274px 2fr;
+  grid-template-columns: 274px 1fr;
   gap: 80px;
 
-  .steps-preview {
+  button:hover {
+    cursor: pointer;
+  }
+
+  .steps {
     background: url(./assets/images/bg-sidebar-desktop.svg);
     background-repeat: no-repeat;
     height: 500px;
@@ -36,86 +41,155 @@ $border-radius: 10px;
     list-style: none;
     .StepPreview {
       display: flex;
-      gap: 15px;
+      gap: $padding;
       align-items: center;
       justify-content: start;
       margin: 0 0 30px 0;
-      // &.active .step {
-      //   background-color: $light-blue;
-      //   border: 1px solid $light-blue;
-      //   color: $marine-blue;
-      // }
       .step {
         border: 1px solid white;
         border-radius: 50%;
         padding: 10px 14px;
+        &.active {
+          background-color: $light-blue;
+          border: 1px solid $light-blue;
+          color: $marine-blue;
+        }
       }
-      div > * {
-        margin: 0 0 5px 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-      .name {
-        color: $light-grey;
-        font-size: 14px;
+      div {
+        > * {
+          margin: 0 0 5px 0;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+        .name {
+          color: $light-grey;
+          font-size: 14px;
+        }
       }
     }
   }
 
-  .SelectPlan {
+  .wizard-step {
+    margin: 0 70px 0 0;
     display: grid;
-    grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
-    justify-items: start;
-    // align-items: stretch;
-    border: 1px solid red;
+    grid-template-rows: 100px 185px 60px 1fr;
+    gap: 40px;
+  }
+
+  .StepHeader {
+    padding: $padding 0;
+    > * {
+      margin: 10px auto;
+    }
+    p {
+      color: $cool-grey;
+    }
+  }
+
+  .NavButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding-bottom: 10px;
+    button {
+      font-family: $font;
+      font-size: 16px;
+      padding: 15px;
+      border-radius: $border-radius;
+      min-width: 125px;
+      font-weight: 500;
+    }
+    .back {
+      background: transparent;
+      border: none;
+      color: $cool-grey;
+    }
+    .next {
+      background: $marine-blue;
+      color: $alabaster;
+    }
+  }
+
+  .SelectPlan {
     .plans {
-      .Plan {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: $padding;
+      .plan {
         border: 1px solid $light-grey;
-        padding: 10px;
+        background: transparent;
+        padding: $padding;
         border-radius: $border-radius;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &.active {
+          border: 1px solid $marine-blue;
+          background-color: $pastel-blue;
+        }
+        div {
+          text-align: left;
+          font-family: $font;
+          & > * {
+            display: block;
+            margin: 5px;
+          }
+          .name {
+            text-transform: capitalize;
+          }
+          .price {
+            color: $cool-grey;
+          }
+        }
       }
     }
     .toggle-container {
-      background: $alabaster;
-      padding: 15px;
-      border: 1px solid red;
+      background: $pastel-blue;
+      padding: $padding;
       border-radius: $border-radius;
-      width: 100%;
+      text-align: center;
       .toggle {
         position: relative;
         display: inline-block;
-        margin: 20px;
+        margin: auto 20px;
         width: 40px;
         height: 20px;
-      }
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        border-radius: 34px;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: $marine-blue;
-        -webkit-transition: 0.4s;
-        transition: 0.4s;
-        &:before {
+        .slider {
           position: absolute;
-          content: "";
-          height: 14px;
-          width: 14px;
-          left: 3px;
-          bottom: 3px;
-          border-radius: 50%;
-          background-color: white;
+          cursor: pointer;
+          border-radius: 34px;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: $marine-blue;
           -webkit-transition: 0.4s;
           transition: 0.4s;
+          &:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            border-radius: 50%;
+            background-color: white;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+          }
         }
       }
       input:checked + .slider:before {
         -webkit-transform: translateX(20px);
         -ms-transform: translateX(20px);
         transform: translateX(20px);
+      }
+      strong {
+        text-transform: capitalize;
+        color: $cool-grey;
+        &.active {
+          color: $marine-blue;
+        }
       }
     }
   }
