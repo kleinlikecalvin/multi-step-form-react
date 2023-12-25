@@ -1,44 +1,62 @@
 import React from "react";
 import "./App.scss";
-// import UserInfo from "./UserInfo";
+import { initialCart } from "./constants";
+import UserInfo from "./UserInfo";
 import SelectPlan from "./SelectPlan";
-// import AddOns from "./AddOns";
+import AddOns from "./AddOns";
 // import Summary from "./Summary";
 // import OrderConfirmation from "./OrderConfirmation";
 
-/**
- * Use active state to conditionally render each step and to add active css to the active step number
- * Higher border radius for App
- */
-
 export default function App() {
   const [cart, setCart] = React.useState<{
-    plan: { name: string; monthlyCost: number; annualCost: number };
+    plan: { name: string };
     addOns?: { name: string; monthlyCost: number; annualCost: number }[];
-  }>({ plan: { name: "", monthlyCost: 0, annualCost: 0 }, addOns: [] });
-  const [active, setActive] = React.useState(false);
+  }>(initialCart);
+  const [active, setActive] = React.useState(2);
 
   return (
     <div className="App">
-      <ol className="steps-preview">
-        <StepPreview step={1} details="your info" />
-        <StepPreview step={2} details="select plan" />
-        <StepPreview step={3} details="add-ons" />
-        <StepPreview step={4} details="summary" />
+      <ol className="steps">
+        <StepPreview isActive={active === 1} step={1} details="your info" />
+        <StepPreview isActive={active === 2} step={2} details="select plan" />
+        <StepPreview isActive={active === 3} step={3} details="add-ons" />
+        <StepPreview isActive={active === 4} step={4} details="summary" />
       </ol>
-      {/* <UserInfo /> */}
-      <SelectPlan />
-      {/* <AddOns />
-      <Summary />
-      <OrderConfirmation /> */}
+      {active === 1 && (
+        <UserInfo cart={cart} updateCart={setCart} updateActive={setActive} />
+      )}
+      {active === 2 && (
+        <SelectPlan cart={cart} updateCart={setCart} updateActive={setActive} />
+      )}
+      {active === 3 && (
+        <AddOns cart={cart} updateCart={setCart} updateActive={setActive} />
+      )}
+      {/* {active === 4 && (
+        <Summary cart={cart} updateCart={setCart} updateActive={setActive} />
+      )}
+      {active === 5 && (
+        <OrderConfirmation
+          cart={cart}
+          updateCart={setCart}
+          updateActive={setActive}
+        />
+      )} */}
     </div>
   );
 }
 
-function StepPreview({ step, details }: { step: number; details: string }) {
+function StepPreview({
+  isActive,
+  step,
+  details,
+}: {
+  isActive: boolean;
+  step: number;
+  details: string;
+}) {
   return (
     <li className="StepPreview">
-      <strong className="step">{step}</strong>
+      <strong className={isActive ? "step active" : "step"}>{step}</strong>
       <div>
         <p className="name">step {step}</p>
         <strong className="details">{details}</strong>
