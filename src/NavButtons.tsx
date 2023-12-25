@@ -1,8 +1,18 @@
-export default function NavButtons() {
+export default function NavButtons({
+  backClick,
+  nextClick,
+}: {
+  backClick: (event: any) => void;
+  nextClick: (event: any) => void;
+}) {
   return (
     <div className="NavButtons">
-      <button>Go Back</button>
-      <button>Next Step</button>
+      <button className="back" onClick={backClick}>
+        Go Back
+      </button>
+      <button className="next" onClick={nextClick}>
+        Next Step
+      </button>
     </div>
   );
 }
