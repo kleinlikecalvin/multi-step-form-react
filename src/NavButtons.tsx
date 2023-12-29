@@ -1,17 +1,23 @@
 export default function NavButtons({
+  hideButton,
+  isStepFourActive,
   backClick,
   nextClick,
 }: {
-  backClick: (event: any) => void;
+  hideButton?: boolean;
+  isStepFourActive?: boolean;
+  backClick?: (event: any) => void;
   nextClick: (event: any) => void;
 }) {
   return (
     <div className="NavButtons">
-      <button className="back" onClick={backClick}>
-        Go Back
-      </button>
+      {!hideButton && (
+        <button className="back" onClick={backClick}>
+          Go Back
+        </button>
+      )}
       <button className="next" onClick={nextClick}>
-        Next Step
+        {isStepFourActive ? "confirm" : "next step"}
       </button>
     </div>
   );

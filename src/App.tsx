@@ -12,7 +12,7 @@ export default function App() {
     plan: { name: string };
     addOns?: { name: string; monthlyCost: number; annualCost: number }[];
   }>(initialCart);
-  const [active, setActive] = React.useState(2);
+  const [active, setActive] = React.useState(1);
 
   return (
     <div className="App">
@@ -22,23 +22,23 @@ export default function App() {
         <StepPreview isActive={active === 3} step={3} details="add-ons" />
         <StepPreview isActive={active === 4} step={4} details="summary" />
       </ol>
-      {active === 1 && (
-        <UserInfo cart={cart} updateCart={setCart} updateActive={setActive} />
-      )}
+      {/* UserInfo needs error messaging and styling */}
+      {active === 1 && <UserInfo updateActiveStep={setActive} />}
       {active === 2 && (
-        <SelectPlan cart={cart} updateCart={setCart} updateActive={setActive} />
+        <SelectPlan
+          cart={cart}
+          updateCart={setCart}
+          updateActiveStep={setActive}
+        />
       )}
       {active === 3 && (
-        <AddOns cart={cart} updateCart={setCart} updateActive={setActive} />
+        <AddOns cart={cart} updateCart={setCart} updateActiveStep={setActive} />
       )}
       {/* {active === 4 && (
-        <Summary cart={cart} updateCart={setCart} updateActive={setActive} />
+        <Summary cart={cart} updateActiveStep={setActive} />
       )}
       {active === 5 && (
         <OrderConfirmation
-          cart={cart}
-          updateCart={setCart}
-          updateActive={setActive}
         />
       )} */}
     </div>

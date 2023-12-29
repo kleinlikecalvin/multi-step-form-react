@@ -4,14 +4,14 @@ import NavButtons from "./NavButtons";
 export default function AddOns({
   cart,
   updateCart,
-  updateActive,
+  updateActiveStep,
 }: {
   cart: {
     plan: { name: string };
     addOns?: { name: string; monthlyCost: number; annualCost: number }[];
   };
   updateCart: Function;
-  updateActive: Function;
+  updateActiveStep: Function;
 }) {
   return (
     <form>

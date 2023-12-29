@@ -18,7 +18,7 @@ $padding: 20px;
   border-radius: $border-radius;
   box-shadow: 10px 10px 10px rgba(211, 211, 211, 0.643);
   max-width: 1000px;
-  max-height: 565px;
+  max-height: 569px;
   margin: 100px auto;
   background-color: $alabaster;
   padding: $padding;
@@ -33,7 +33,7 @@ $padding: 20px;
   .steps {
     background: url(./assets/images/bg-sidebar-desktop.svg);
     background-repeat: no-repeat;
-    height: 500px;
+    height: 508px;
     margin: 0;
     padding: 30px;
     color: white;
@@ -69,15 +69,14 @@ $padding: 20px;
     }
   }
 
-  .wizard-step {
-    margin: 0 70px 0 0;
+  .grid {
+    margin: 0 60px 0 0;
     display: grid;
-    grid-template-rows: 100px 185px 60px 1fr;
-    gap: 40px;
   }
 
   .StepHeader {
     padding: $padding 0;
+    color: $marine-blue;
     > * {
       margin: 10px auto;
     }
@@ -87,10 +86,11 @@ $padding: 20px;
   }
 
   .NavButtons {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-areas: "back next";
     align-items: end;
-    padding-bottom: 10px;
+    justify-content: space-between;
+    margin-bottom: 40px;
     button {
       font-family: $font;
       font-size: 16px;
@@ -98,19 +98,59 @@ $padding: 20px;
       border-radius: $border-radius;
       min-width: 125px;
       font-weight: 500;
+      text-transform: capitalize;
     }
     .back {
+      grid-area: back;
       background: transparent;
       border: none;
       color: $cool-grey;
+      &:hover {
+        color: $marine-blue;
+      }
     }
     .next {
+      grid-area: next;
       background: $marine-blue;
       color: $alabaster;
+      &:hover {
+        opacity: 90%;
+      }
+    }
+  }
+
+  .UserInfo {
+    grid-template-rows: 100px auto 1fr;
+    gap: 35px;
+    form {
+      color: $marine-blue;
+      font-family: $font;
+      font-weight: 500;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+      label {
+        padding: 0 0 10px;
+      }
+      input {
+        padding: $padding;
+        border-radius: $border-radius;
+        font-size: 18px;
+        font-family: $font;
+        font-weight: 500;
+        color: $marine-blue;
+        margin-bottom: $padding;
+        border: 1px solid $light-grey;
+        &:focus-visible {
+          outline: 1px solid $marine-blue !important;
+        }
+      }
     }
   }
 
   .SelectPlan {
+    grid-template-rows: 100px 185px 60px 1fr;
+    gap: 40px;
     .plans {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -126,6 +166,9 @@ $padding: 20px;
         &.active {
           border: 1px solid $marine-blue;
           background-color: $pastel-blue;
+        }
+        &:hover {
+          border: 1px solid $marine-blue;
         }
         div {
           text-align: left;

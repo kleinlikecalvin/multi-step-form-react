@@ -9,14 +9,14 @@ import NavButtons from "./NavButtons";
 export default function SelectPlan({
   cart,
   updateCart,
-  updateActive,
+  updateActiveStep,
 }: {
   cart: {
     plan: { name: string };
     addOns?: { name: string; monthlyCost: number; annualCost: number }[];
   };
   updateCart: Function;
-  updateActive: Function;
+  updateActiveStep: Function;
 }) {
   const [planSelected, setPlanSelected] = React.useState("advanced");
   const [subscriptionCycle, setSubscriptionCycle] = React.useState<
@@ -26,7 +26,7 @@ export default function SelectPlan({
   const discount = "2 months free";
 
   return (
-    <form className="SelectPlan wizard-step">
+    <div className="SelectPlan grid">
       <StepHeader
         title="Select your plan"
         desc="You have the option of monthly or yearly billing."
@@ -67,17 +67,18 @@ export default function SelectPlan({
         <strong className={!isMonthly ? "active" : undefined}>yearly</strong>
       </div>
       <NavButtons
+        hideButton={false}
         backClick={(e) => {
           e.preventDefault();
           updateCart(initialCart);
-          updateActive(1);
+          updateActiveStep(1);
         }}
         nextClick={(e) => {
           e.preventDefault();
           updateCart({ ...cart, plan: { name: planSelected } });
-          updateActive(3);
+          updateActiveStep(3);
         }}
       />
-    </form>
+    </div>
   );
 }

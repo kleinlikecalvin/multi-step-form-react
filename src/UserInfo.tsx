@@ -1,38 +1,48 @@
-import React from "react";
 import StepHeader from "./StepHeader";
 import NavButtons from "./NavButtons";
+
 export default function UserInfo({
-  cart,
-  updateCart,
-  updateActive,
+  updateActiveStep,
 }: {
-  cart: {
-    plan: { name: string };
-    addOns?: { name: string; monthlyCost: number; annualCost: number }[];
-  };
-  updateCart: Function;
-  updateActive: Function;
+  updateActiveStep: Function;
 }) {
   return (
-    <form>
+    <div className="UserInfo grid">
       <StepHeader
         title="Personal Info"
         desc="Please provide your name, email address, and phone number."
       />
-      <label htmlFor="name">Name</label>
-      <input type="text" placeholder="e.g. Stephen King" name="name" />
-      <label htmlFor="email">Email Address</label>
-      <input type="email" name="email" />
-      <label htmlFor="phone">Phone Number</label>
-      <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="phone" />
+      <form>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          placeholder="e.g. Stephen King"
+          name="name"
+          required
+        />
+        <label htmlFor="email">Email Address</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="e.g. email@website.com"
+          required
+        />
+        <label htmlFor="phone">Phone Number</label>
+        <input
+          type="tel"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          name="phone"
+          placeholder="e.g. +1 234 567 8910"
+          required
+        />
+      </form>{" "}
       <NavButtons
-        backClick={(e) => {
-          e.preventDefault();
-        }}
+        hideButton={true}
         nextClick={(e) => {
           e.preventDefault();
+          updateActiveStep(2);
         }}
       />
-    </form>
+    </div>
   );
 }
