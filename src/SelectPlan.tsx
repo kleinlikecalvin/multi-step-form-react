@@ -12,8 +12,9 @@ export default function SelectPlan({
   updateActiveStep,
 }: {
   cart: {
-    plan: { name: string };
-    addOns?: { name: string; monthlyCost: number; annualCost: number }[];
+    plan: string;
+    subscriptionCycle: string;
+    addOns?: string[];
   };
   updateCart: Function;
   updateActiveStep: Function;
@@ -75,7 +76,11 @@ export default function SelectPlan({
         }}
         nextClick={(e) => {
           e.preventDefault();
-          updateCart({ ...cart, plan: { name: planSelected } });
+          updateCart({
+            ...cart,
+            plan: planSelected,
+            subscriptionCycle,
+          });
           updateActiveStep(3);
         }}
       />

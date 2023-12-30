@@ -9,10 +9,11 @@ import AddOns from "./AddOns";
 
 export default function App() {
   const [cart, setCart] = React.useState<{
-    plan: { name: string };
-    addOns?: { name: string; monthlyCost: number; annualCost: number }[];
+    plan: string;
+    subscriptionCycle: string;
+    addOns?: string[];
   }>(initialCart);
-  const [active, setActive] = React.useState(1);
+  const [active, setActive] = React.useState(3);
 
   return (
     <div className="App">
