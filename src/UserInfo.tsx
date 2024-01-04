@@ -1,6 +1,12 @@
 import StepHeader from "./StepHeader";
 import NavButtons from "./NavButtons";
 
+/**
+ *
+ * @TODO
+ * Needs error messaging for incomplete fields
+ */
+
 export default function UserInfo({
   updateActiveStep,
 }: {
@@ -35,11 +41,10 @@ export default function UserInfo({
           placeholder="e.g. +1 234 567 8910"
           required
         />
-      </form>{" "}
+      </form>
       <NavButtons
         hideButton={true}
-        nextClick={(e) => {
-          e.preventDefault();
+        nextClick={() => {
           updateActiveStep(2);
         }}
       />
