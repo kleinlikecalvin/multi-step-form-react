@@ -1,21 +1,14 @@
 import React from "react";
-import { plans, initialCart } from "./constants";
+import { plans, initialCart, Cart } from "./constants";
 import StepHeader from "./StepHeader";
 import NavButtons from "./NavButtons";
-
-// type Unarray<T> = T extends Array<infer U> ? U : T;
-// type Plan = Unarray<typeof plans>['']
 
 export default function SelectPlan({
   cart,
   updateCart,
   updateActiveStep,
 }: {
-  cart: {
-    plan: string;
-    subscriptionCycle: string;
-    addOns?: string[];
-  };
+  cart: Cart;
   updateCart: Function;
   updateActiveStep: Function;
 }) {
@@ -33,17 +26,16 @@ export default function SelectPlan({
         desc="You have the option of monthly or yearly billing."
       />
       <div className="plans">
-        {plans.map((plan) => (
+        {Object.entries(plans).map(([name, plan]) => (
           <button
-            className={plan.name === planSelected ? "plan active" : "plan"}
-            onClick={(e) => {
-              e.preventDefault();
-              setPlanSelected(plan.name);
+            className={name === planSelected ? "plan active" : "plan"}
+            onClick={() => {
+              setPlanSelected(name);
             }}
           >
             <img src={plan.icon} alt="" />
             <div>
-              <strong className="name">{plan.name}</strong>
+              <strong className="name">{name}</strong>
               <small className="price">
                 ${isMonthly ? plan.monthlyCost : plan.annualCost}/
                 {isMonthly ? "mo" : "yr"}
@@ -69,13 +61,11 @@ export default function SelectPlan({
       </div>
       <NavButtons
         hideButton={false}
-        backClick={(e) => {
-          e.preventDefault();
+        backClick={() => {
           updateCart(initialCart);
           updateActiveStep(1);
         }}
-        nextClick={(e) => {
-          e.preventDefault();
+        nextClick={() => {
           updateCart({
             ...cart,
             plan: planSelected,
