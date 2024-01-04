@@ -16,7 +16,10 @@ export default function NavButtons({
           Go Back
         </button>
       )}
-      <button className="next" onClick={nextClick}>
+      <button
+        className={isStepFourActive ? "confirm" : "next step"}
+        onClick={nextClick}
+      >
         {isStepFourActive ? "confirm" : "next step"}
       </button>
     </div>
