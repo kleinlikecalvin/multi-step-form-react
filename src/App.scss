@@ -1,17 +1,20 @@
 // Colors
 $marine-blue: hsl(213, 96%, 18%);
 $purple-blue: hsl(243, 100%, 62%);
-$pastel-blue: hsla(228, 69%, 91%, 0.382);
+$pastel-blue: hsl(228, 100%, 84%);
 $light-blue: hsl(206, 94%, 87%);
 $strawberry: hsl(354, 84%, 57%);
 $cool-grey: hsl(231, 11%, 63%);
 $light-grey: hsl(229, 24%, 87%);
 $alabaster: hsl(231, 100%, 99%);
+$magnolia: hsl(217, 100%, 97%);
 
 // Stylings
 $border-radius: 10px;
 $font: "Ubuntu", "Helvetica Neue", sans-serif;
 $padding: 20px;
+$step-header-height: 100px;
+$step-nav-buttons-height: 90px;
 
 .App {
   font-family: $font;
@@ -20,7 +23,7 @@ $padding: 20px;
   max-width: 1000px;
   max-height: 569px;
   margin: 100px auto;
-  background-color: $alabaster;
+  background-color: white;
   padding: $padding;
   display: grid;
   grid-template-columns: 274px 1fr;
@@ -72,10 +75,11 @@ $padding: 20px;
   .grid {
     margin: 0 60px 0 0;
     display: grid;
+    gap: 35px;
   }
 
   .StepHeader {
-    padding: $padding 0;
+    padding: $padding 0 0;
     color: $marine-blue;
     > * {
       margin: 10px auto;
@@ -117,11 +121,19 @@ $padding: 20px;
         opacity: 90%;
       }
     }
+    .confirm {
+      grid-area: next;
+      background-color: $purple-blue;
+      color: $alabaster;
+      border: none;
+      &:hover {
+        opacity: 70%;
+      }
+    }
   }
 
   .UserInfo {
-    grid-template-rows: 100px auto 1fr;
-    gap: 35px;
+    grid-template-rows: $step-header-height auto $step-nav-buttons-height;
     form {
       color: $marine-blue;
       font-family: $font;
@@ -133,7 +145,7 @@ $padding: 20px;
         padding: 0 0 10px;
       }
       input {
-        padding: $padding;
+        padding: 15px;
         border-radius: $border-radius;
         font-size: 18px;
         font-family: $font;
@@ -142,15 +154,14 @@ $padding: 20px;
         margin-bottom: $padding;
         border: 1px solid $light-grey;
         &:focus-visible {
-          outline: 1px solid $marine-blue !important;
+          outline: 1px solid $purple-blue !important;
         }
       }
     }
   }
 
   .SelectPlan {
-    grid-template-rows: 100px 185px 60px 1fr;
-    gap: 40px;
+    grid-template-rows: $step-header-height auto 60px $step-nav-buttons-height;
     .plans {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -163,12 +174,13 @@ $padding: 20px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        color: $marine-blue;
         &.active {
-          border: 1px solid $marine-blue;
-          background-color: $pastel-blue;
+          border: 1px solid $purple-blue;
+          background-color: $magnolia;
         }
         &:hover {
-          border: 1px solid $marine-blue;
+          border: 1px solid $purple-blue;
         }
         div {
           text-align: left;
@@ -187,7 +199,7 @@ $padding: 20px;
       }
     }
     .toggle-container {
-      background: $pastel-blue;
+      background: $magnolia;
       padding: $padding;
       border-radius: $border-radius;
       text-align: center;
@@ -233,6 +245,116 @@ $padding: 20px;
         &.active {
           color: $marine-blue;
         }
+      }
+    }
+  }
+  .AddOns {
+    grid-template-rows: $step-header-height auto $step-nav-buttons-height;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: $padding;
+      .AddOn {
+        border-radius: $border-radius;
+        padding: 15px $padding;
+        display: flex;
+        align-items: center;
+        &:hover {
+          border: 1px solid $purple-blue;
+          cursor: pointer;
+        }
+        &.selected {
+          background: $alabaster;
+          border: 1px solid $purple-blue;
+          input[type="checkbox"] {
+            border: 1px solid $light-grey;
+            background-color: $purple-blue;
+          }
+        }
+        input[type="checkbox"] {
+          margin: 0 $padding 0 0;
+          width: 1.5em;
+          height: 1.5em;
+          border: 1px solid $light-grey;
+          border-radius: 50px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .text {
+          margin: 0 auto 0 0;
+          > * {
+            display: block;
+          }
+          label {
+            font-weight: 500;
+            text-transform: capitalize;
+            color: $marine-blue;
+          }
+          .details {
+            color: $cool-grey;
+          }
+        }
+        .price {
+          color: $purple-blue;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .Summary {
+    grid-template-rows: $step-header-height auto $step-nav-buttons-height;
+    color: $marine-blue;
+    .plan-container,
+    .subscription ul li,
+    .total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .subscription {
+      background-color: $magnolia;
+      padding: $padding;
+      border-radius: $border-radius;
+      .plan-container {
+        font-size: 18px;
+        font-weight: 500;
+        .plan {
+          margin: 0;
+        }
+        button {
+          display: block;
+          border: none;
+          text-decoration: underline;
+          color: $purple-blue;
+          background-color: transparent;
+          font-family: $font;
+          padding: 0;
+          margin-top: $padding;
+        }
+      }
+      hr {
+        border: none;
+        border-top: 1px solid $light-grey;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        text-transform: capitalize;
+        color: $cool-grey;
+        li small {
+          font-weight: 450;
+          color: $marine-blue;
+        }
+      }
+    }
+    .total {
+      color: $cool-grey;
+      padding: 0 $padding;
+      .cost {
+        color: $purple-blue;
+        font-weight: 500;
+        font-size: 20px;
       }
     }
   }
