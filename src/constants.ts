@@ -4,13 +4,13 @@ import proIcon from "./assets/images/icon-pro.svg";
 
 export type Cart = {
   plan: keyof typeof plans;
-  subscriptionCycle: string;
+  subscriptionCycle: "monthly" | "yearly";
   addOns?: (keyof typeof addOns)[];
 };
 
 export const initialCart: Cart = {
   plan: "advanced",
-  subscriptionCycle: "monthly",
+  subscriptionCycle: "yearly",
   addOns: [],
 };
 
