@@ -1,0 +1,64 @@
+@import "../App.scss";
+
+.Summary {
+  grid-template-rows: $step-header-height auto $step-nav-buttons-height;
+  color: $marine-blue;
+  .plan-container,
+  .subscription ul li,
+  .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .subscription {
+    background-color: $magnolia;
+    padding: $twenty-px;
+    border-radius: $border-radius;
+    .plan-container {
+      font-size: 18px;
+      font-weight: 500;
+      .plan {
+        margin: 0;
+        text-transform: capitalize;
+      }
+      button {
+        display: block;
+        border: none;
+        text-decoration: underline;
+        color: $purple-blue;
+        background-color: transparent;
+        font-family: $font;
+        padding: 0;
+        margin-top: 5px;
+      }
+    }
+    hr {
+      border: none;
+      border-top: 1px solid $light-grey;
+      margin: 20px 0;
+    }
+    .add-ons-container {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-transform: capitalize;
+      color: $cool-grey;
+      li:not(:first-child) {
+        margin-top: $twenty-px;
+      }
+      li span {
+        display: block;
+        color: $marine-blue;
+      }
+    }
+  }
+  .total {
+    color: $cool-grey;
+    padding: 0 $twenty-px;
+    .cost {
+      color: $purple-blue;
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+}
