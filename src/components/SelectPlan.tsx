@@ -1,7 +1,8 @@
 import React from "react";
-import { plans, initialCart, Cart } from "./constants";
+import { plans, initialCart, Cart } from "../constants";
 import StepHeader from "./StepHeader";
 import NavButtons from "./NavButtons";
+import "./SelectPlan.scss";
 
 export default function SelectPlan({
   cart,
@@ -15,7 +16,7 @@ export default function SelectPlan({
   const [planSelected, setPlanSelected] = React.useState("advanced");
   const [subscriptionCycle, setSubscriptionCycle] = React.useState<
     "monthly" | "yearly"
-  >("yearly");
+  >(cart.subscriptionCycle);
   const isMonthly = subscriptionCycle === "monthly";
   const discount = "2 months free";
 

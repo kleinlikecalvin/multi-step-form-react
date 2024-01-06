@@ -1,0 +1,47 @@
+@import "../App.scss";
+
+.NavButtons {
+  display: grid;
+  grid-template-areas: "back next";
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  button {
+    font-family: $font;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: $border-radius;
+    min-width: 125px;
+    min-height: 50px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  .back {
+    grid-area: back;
+    background: transparent;
+    border: none;
+    color: $cool-grey;
+    text-align: left;
+    padding-left: 0;
+    &:hover {
+      color: $marine-blue;
+    }
+  }
+  .next {
+    grid-area: next;
+    background: $marine-blue;
+    color: $alabaster;
+    &:hover {
+      opacity: 90%;
+    }
+  }
+  .confirm {
+    grid-area: next;
+    background-color: $purple-blue;
+    color: $alabaster;
+    border: none;
+    &:hover {
+      opacity: 70%;
+    }
+  }
+}

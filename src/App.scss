@@ -12,7 +12,7 @@ $magnolia: hsl(217, 100%, 97%);
 // Stylings
 $border-radius: 10px;
 $font: "Ubuntu", "Helvetica Neue", sans-serif;
-$padding: 20px;
+$twenty-px: 20px;
 $step-header-height: 100px;
 $step-nav-buttons-height: 90px;
 
@@ -24,10 +24,10 @@ $step-nav-buttons-height: 90px;
   max-height: 569px;
   margin: 100px auto;
   background-color: white;
-  padding: $padding;
+  padding: $twenty-px;
   display: grid;
   grid-template-columns: 274px 1fr;
-  gap: 80px;
+  gap: 100px;
 
   button:hover {
     cursor: pointer;
@@ -44,7 +44,7 @@ $step-nav-buttons-height: 90px;
     list-style: none;
     .StepPreview {
       display: flex;
-      gap: $padding;
+      gap: $twenty-px;
       align-items: center;
       justify-content: start;
       margin: 0 0 30px 0;
@@ -73,289 +73,8 @@ $step-nav-buttons-height: 90px;
   }
 
   .grid {
-    margin: 0 60px 0 0;
+    margin: 0 80px 0 0;
     display: grid;
     gap: 35px;
-  }
-
-  .StepHeader {
-    padding: $padding 0 0;
-    color: $marine-blue;
-    > * {
-      margin: 10px auto;
-    }
-    p {
-      color: $cool-grey;
-    }
-  }
-
-  .NavButtons {
-    display: grid;
-    grid-template-areas: "back next";
-    align-items: end;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    button {
-      font-family: $font;
-      font-size: 16px;
-      padding: 15px;
-      border-radius: $border-radius;
-      min-width: 125px;
-      font-weight: 500;
-      text-transform: capitalize;
-    }
-    .back {
-      grid-area: back;
-      background: transparent;
-      border: none;
-      color: $cool-grey;
-      &:hover {
-        color: $marine-blue;
-      }
-    }
-    .next {
-      grid-area: next;
-      background: $marine-blue;
-      color: $alabaster;
-      &:hover {
-        opacity: 90%;
-      }
-    }
-    .confirm {
-      grid-area: next;
-      background-color: $purple-blue;
-      color: $alabaster;
-      border: none;
-      &:hover {
-        opacity: 70%;
-      }
-    }
-  }
-
-  .UserInfo {
-    grid-template-rows: $step-header-height auto $step-nav-buttons-height;
-    form {
-      color: $marine-blue;
-      font-family: $font;
-      font-weight: 500;
-      font-size: 16px;
-      display: flex;
-      flex-direction: column;
-      label {
-        padding: 0 0 10px;
-      }
-      input {
-        padding: 15px;
-        border-radius: $border-radius;
-        font-size: 18px;
-        font-family: $font;
-        font-weight: 500;
-        color: $marine-blue;
-        margin-bottom: $padding;
-        border: 1px solid $light-grey;
-        &:focus-visible {
-          outline: 1px solid $purple-blue !important;
-        }
-      }
-    }
-  }
-
-  .SelectPlan {
-    grid-template-rows: $step-header-height auto 60px $step-nav-buttons-height;
-    .plans {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: $padding;
-      .plan {
-        border: 1px solid $light-grey;
-        background: transparent;
-        padding: $padding;
-        border-radius: $border-radius;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        color: $marine-blue;
-        &.active {
-          border: 1px solid $purple-blue;
-          background-color: $magnolia;
-        }
-        &:hover {
-          border: 1px solid $purple-blue;
-        }
-        div {
-          text-align: left;
-          font-family: $font;
-          & > * {
-            display: block;
-            margin: 5px;
-          }
-          .name {
-            text-transform: capitalize;
-          }
-          .price {
-            color: $cool-grey;
-          }
-        }
-      }
-    }
-    .toggle-container {
-      background: $magnolia;
-      padding: $padding;
-      border-radius: $border-radius;
-      text-align: center;
-      .toggle {
-        position: relative;
-        display: inline-block;
-        margin: auto 20px;
-        width: 40px;
-        height: 20px;
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          border-radius: 34px;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: $marine-blue;
-          -webkit-transition: 0.4s;
-          transition: 0.4s;
-          &:before {
-            position: absolute;
-            content: "";
-            height: 14px;
-            width: 14px;
-            left: 3px;
-            bottom: 3px;
-            border-radius: 50%;
-            background-color: white;
-            -webkit-transition: 0.4s;
-            transition: 0.4s;
-          }
-        }
-      }
-      input:checked + .slider:before {
-        -webkit-transform: translateX(20px);
-        -ms-transform: translateX(20px);
-        transform: translateX(20px);
-      }
-      strong {
-        text-transform: capitalize;
-        color: $cool-grey;
-        &.active {
-          color: $marine-blue;
-        }
-      }
-    }
-  }
-  .AddOns {
-    grid-template-rows: $step-header-height auto $step-nav-buttons-height;
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: $padding;
-      .AddOn {
-        border-radius: $border-radius;
-        padding: 15px $padding;
-        display: flex;
-        align-items: center;
-        &:hover {
-          border: 1px solid $purple-blue;
-          cursor: pointer;
-        }
-        &.selected {
-          background: $alabaster;
-          border: 1px solid $purple-blue;
-          input[type="checkbox"] {
-            border: 1px solid $light-grey;
-            background-color: $purple-blue;
-          }
-        }
-        input[type="checkbox"] {
-          margin: 0 $padding 0 0;
-          width: 1.5em;
-          height: 1.5em;
-          border: 1px solid $light-grey;
-          border-radius: 50px;
-          &:hover {
-            cursor: pointer;
-          }
-        }
-        .text {
-          margin: 0 auto 0 0;
-          > * {
-            display: block;
-          }
-          label {
-            font-weight: 500;
-            text-transform: capitalize;
-            color: $marine-blue;
-          }
-          .details {
-            color: $cool-grey;
-          }
-        }
-        .price {
-          color: $purple-blue;
-          font-weight: 500;
-        }
-      }
-    }
-  }
-  .Summary {
-    grid-template-rows: $step-header-height auto $step-nav-buttons-height;
-    color: $marine-blue;
-    .plan-container,
-    .subscription ul li,
-    .total {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .subscription {
-      background-color: $magnolia;
-      padding: $padding;
-      border-radius: $border-radius;
-      .plan-container {
-        font-size: 18px;
-        font-weight: 500;
-        .plan {
-          margin: 0;
-        }
-        button {
-          display: block;
-          border: none;
-          text-decoration: underline;
-          color: $purple-blue;
-          background-color: transparent;
-          font-family: $font;
-          padding: 0;
-          margin-top: $padding;
-        }
-      }
-      hr {
-        border: none;
-        border-top: 1px solid $light-grey;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        text-transform: capitalize;
-        color: $cool-grey;
-        li small {
-          font-weight: 450;
-          color: $marine-blue;
-        }
-      }
-    }
-    .total {
-      color: $cool-grey;
-      padding: 0 $padding;
-      .cost {
-        color: $purple-blue;
-        font-weight: 500;
-        font-size: 20px;
-      }
-    }
   }
 }

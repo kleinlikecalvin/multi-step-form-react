@@ -1,4 +1,6 @@
-import thankYou from "./assets/images/icon-thank-you.svg";
+import thankYou from "../assets/images/icon-thank-you.svg";
+import "./OrderConfirmation.scss";
+
 export default function OrderConfirmation() {
   return (
     <div className="OrderConfirmation">

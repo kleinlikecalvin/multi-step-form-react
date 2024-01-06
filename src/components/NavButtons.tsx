@@ -1,3 +1,5 @@
+import "./NavButtons.scss";
+
 export default function NavButtons({
   hideButton,
   isStepFourActive,

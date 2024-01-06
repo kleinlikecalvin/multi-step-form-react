@@ -1,11 +1,6 @@
 import StepHeader from "./StepHeader";
 import NavButtons from "./NavButtons";
-
-/**
- *
- * @TODO
- * Needs error messaging for incomplete fields
- */
+import "./UserInfo.scss";
 
 export default function UserInfo({
   updateActiveStep,

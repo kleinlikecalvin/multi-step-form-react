@@ -1,0 +1,12 @@
+@import "../App.scss";
+
+.StepHeader {
+  padding: $twenty-px 0 0;
+  color: $marine-blue;
+  > * {
+    margin: 10px auto;
+  }
+  p {
+    color: $cool-grey;
+  }
+}

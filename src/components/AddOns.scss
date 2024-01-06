@@ -1,0 +1,56 @@
+@import "../App.scss";
+
+.AddOns {
+  grid-template-rows: $step-header-height auto $step-nav-buttons-height;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: $twenty-px;
+    .AddOn {
+      border-radius: $border-radius;
+      padding: 15px $twenty-px;
+      display: flex;
+      align-items: center;
+      &:hover {
+        border: 1px solid $purple-blue;
+        cursor: pointer;
+      }
+      &.selected {
+        background: $alabaster;
+        border: 1px solid $purple-blue;
+        input[type="checkbox"] {
+          border: 1px solid $light-grey;
+          background-color: $purple-blue;
+        }
+      }
+      input[type="checkbox"] {
+        margin: 0 $twenty-px 0 0;
+        width: 1.5em;
+        height: 1.5em;
+        border: 1px solid $light-grey;
+        border-radius: 50px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .text {
+        margin: 0 auto 0 0;
+        > * {
+          display: block;
+        }
+        label {
+          font-weight: 500;
+          text-transform: capitalize;
+          color: $marine-blue;
+        }
+        .details {
+          color: $cool-grey;
+        }
+      }
+      .price {
+        color: $purple-blue;
+        font-weight: 500;
+      }
+    }
+  }
+}

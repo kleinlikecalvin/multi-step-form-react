@@ -1,3 +1,5 @@
+import "./StepHeader.scss";
+
 export default function StepHeader({
   title,
   desc,
