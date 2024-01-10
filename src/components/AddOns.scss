@@ -11,6 +11,7 @@
       padding: 15px $twenty-px;
       display: flex;
       align-items: center;
+      position: relative;
       &:hover {
         border: 1px solid $purple-blue;
         cursor: pointer;
@@ -29,8 +30,23 @@
         height: 1.5em;
         border: 1px solid $light-grey;
         border-radius: 50px;
-        &:hover {
-          cursor: pointer;
+        &:checked {
+          visibility: hidden;
+        }
+      }
+      .checkmark {
+        visibility: hidden;
+        &.selected {
+          visibility: visible;
+          display: block;
+          background: url("../assets/images/icon-checkmark.svg");
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 3px;
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          background-color: $purple-blue;
         }
       }
       .text {
@@ -42,6 +58,7 @@
           font-weight: 500;
           text-transform: capitalize;
           color: $marine-blue;
+          margin-bottom: 5px;
         }
         .details {
           color: $cool-grey;

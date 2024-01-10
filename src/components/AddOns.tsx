@@ -89,6 +89,11 @@ function AddOn({
         name={label}
         checked={selectedAddOns.includes(name)}
       />
+      <span
+        className={
+          selectedAddOns.includes(name) ? "checkmark selected" : "checkmark"
+        }
+      ></span>
       <div className="text">
         <label htmlFor={label}>{name}</label>
         <small className="details">{details}</small>
