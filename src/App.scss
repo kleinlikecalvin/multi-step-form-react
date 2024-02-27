@@ -14,7 +14,7 @@ $border-radius: 10px;
 $font: "Ubuntu", "Helvetica Neue", sans-serif;
 $twenty-px: 20px;
 $step-header-height: 100px;
-$step-nav-buttons-height: 90px;
+$step-nav-buttons-height: 80px;
 
 .App {
   font-family: $font;
@@ -22,17 +22,14 @@ $step-nav-buttons-height: 90px;
   box-shadow: 10px 10px 10px rgba(211, 211, 211, 0.643);
   max-width: 1000px;
   max-height: 569px;
-  margin: 100px auto;
   background-color: white;
   padding: $twenty-px;
   display: grid;
-  grid-template-columns: 274px 1fr;
-  gap: 100px;
-
+  grid-template-columns: 274px auto;
+  margin: 100px auto;
   button:hover {
     cursor: pointer;
   }
-
   .steps {
     background: url(./assets/images/bg-sidebar-desktop.svg);
     background-repeat: no-repeat;
@@ -58,7 +55,7 @@ $step-nav-buttons-height: 90px;
           color: $marine-blue;
         }
       }
-      div {
+      .desc {
         > * {
           margin: 0 0 5px 0;
           text-transform: uppercase;
@@ -71,10 +68,60 @@ $step-nav-buttons-height: 90px;
       }
     }
   }
-
-  .grid {
-    margin: 0 80px 0 0;
+  .grid-d {
+    margin: auto 80px auto 100px;
     display: grid;
+    grid-template-rows: auto $step-nav-buttons-height;
+    grid-template-areas:
+      "content"
+      "nav";
     gap: 35px;
+    height: 100%;
+  }
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0 auto;
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+    position: relative;
+    height: 100vh;
+    .steps {
+      background: url(./assets/images/bg-sidebar-mobile.svg);
+      background-size: cover;
+      height: 112px;
+      border-radius: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: $twenty-px;
+      .StepPreview {
+        margin: 0;
+        > *:not(.step) {
+          display: none;
+        }
+        .step {
+          font-size: 14px;
+          padding: 10px 14px;
+        }
+      }
+    }
+    .grid-d {
+      margin: 0;
+      gap: 25px;
+    }
+    .content {
+      background: white;
+      margin: auto 20px;
+      position: absolute;
+      top: 100px;
+      border-radius: $border-radius;
+      padding: $twenty-px;
+    }
   }
 }
