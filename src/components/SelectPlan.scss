@@ -1,90 +1,147 @@
 @import "../App.scss";
 
 .SelectPlan {
-  grid-template-rows: $step-header-height auto 60px $step-nav-buttons-height;
-  .plans {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: $twenty-px;
-    .plan {
-      border: 1px solid $light-grey;
-      background: transparent;
+  .content {
+    grid-area: content;
+    .plans {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: $twenty-px;
+      height: 175px;
+      .plan {
+        border: 1px solid $light-grey;
+        background: transparent;
+        padding: $twenty-px;
+        border-radius: $border-radius;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: $marine-blue;
+        font-size: 16px;
+        &.active {
+          border: 1px solid $purple-blue;
+          background-color: $magnolia;
+        }
+        &:hover {
+          border: 1px solid $purple-blue;
+        }
+        .desc {
+          text-align: left;
+          font-family: $font;
+          > * {
+            display: block;
+            margin: 5px;
+          }
+          .name {
+            text-transform: capitalize;
+          }
+          .price {
+            color: $cool-grey;
+          }
+        }
+      }
+    }
+    .toggle-container {
+      background: $magnolia;
       padding: $twenty-px;
       border-radius: $border-radius;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: $marine-blue;
-      font-size: 16px;
-      &.active {
-        border: 1px solid $purple-blue;
-        background-color: $magnolia;
-      }
-      &:hover {
-        border: 1px solid $purple-blue;
-      }
-      div {
-        text-align: left;
-        font-family: $font;
-        & > * {
-          display: block;
-          margin: 5px;
+      text-align: center;
+      margin-top: 30px;
+      .toggle {
+        position: relative;
+        display: inline-block;
+        margin: auto 20px;
+        width: 40px;
+        height: 20px;
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          border-radius: 34px;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: $marine-blue;
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+          &:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            border-radius: 50%;
+            background-color: white;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+          }
         }
-        .name {
-          text-transform: capitalize;
-        }
-        .price {
-          color: $cool-grey;
+      }
+      input:checked + .slider:before {
+        -webkit-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        transform: translateX(20px);
+      }
+      strong {
+        text-transform: capitalize;
+        color: $cool-grey;
+        &.active {
+          color: $marine-blue;
         }
       }
     }
   }
-  .toggle-container {
-    background: $magnolia;
-    padding: $twenty-px;
-    border-radius: $border-radius;
-    text-align: center;
-    .toggle {
-      position: relative;
-      display: inline-block;
-      margin: auto 20px;
-      width: 40px;
-      height: 20px;
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        border-radius: 34px;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: $marine-blue;
-        -webkit-transition: 0.4s;
-        transition: 0.4s;
-        &:before {
-          position: absolute;
-          content: "";
-          height: 14px;
-          width: 14px;
-          left: 3px;
-          bottom: 3px;
-          border-radius: 50%;
-          background-color: white;
-          -webkit-transition: 0.4s;
-          transition: 0.4s;
+
+  @media (max-width: 767px) {
+    .content {
+      .plans {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        .plan {
+          display: flex;
+          flex-direction: row;
+          justify-content: left;
+          padding: 10px;
+          gap: 5px;
         }
       }
-    }
-    input:checked + .slider:before {
-      -webkit-transform: translateX(20px);
-      -ms-transform: translateX(20px);
-      transform: translateX(20px);
-    }
-    strong {
-      text-transform: capitalize;
-      color: $cool-grey;
-      &.active {
-        color: $marine-blue;
+      .toggle-container {
+        padding: 10px;
+        margin-top: 10px;
+        .toggle {
+          position: relative;
+          display: inline-block;
+          margin: auto 20px;
+          width: 40px;
+          height: 20px;
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            border-radius: 34px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $marine-blue;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+            &:before {
+              position: absolute;
+              content: "";
+              height: 14px;
+              width: 14px;
+              left: 3px;
+              bottom: 3px;
+              border-radius: 50%;
+              background-color: white;
+              -webkit-transition: 0.4s;
+              transition: 0.4s;
+            }
+          }
+        }
       }
     }
   }
