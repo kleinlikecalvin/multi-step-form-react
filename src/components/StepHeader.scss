@@ -1,12 +1,23 @@
 @import "../App.scss";
 
 .StepHeader {
-  padding: $twenty-px 0 0;
+  padding: 0;
   color: $marine-blue;
+  height: $step-header-height;
   > * {
     margin: 10px auto;
   }
   p {
     color: $cool-grey;
+  }
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 24px;
+    }
+    p {
+      line-height: 1.5;
+      font-size: 16px;
+      font-weight: 400;
+    }
   }
 }
