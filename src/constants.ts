@@ -3,16 +3,28 @@ import advancedIcon from "./assets/images/icon-advanced.svg";
 import proIcon from "./assets/images/icon-pro.svg";
 
 export type Cart = {
+  userInfo: {
+    name: string;
+    email: string;
+    phone: string;
+  };
   plan: keyof typeof plans;
   subscriptionCycle: "monthly" | "yearly";
-  addOns?: (keyof typeof addOns)[];
+  addOns: (keyof typeof addOns)[];
 };
 
 export const initialCart: Cart = {
-  plan: "advanced",
-  subscriptionCycle: "yearly",
+  userInfo: {
+    name: "",
+    email: "",
+    phone: "",
+  },
+  plan: "arcade",
+  subscriptionCycle: "monthly",
   addOns: [],
 };
+
+export type Plans = keyof typeof plans;
 
 export const plans = {
   arcade: {
