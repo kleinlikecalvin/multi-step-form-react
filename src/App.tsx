@@ -9,7 +9,7 @@ import OrderConfirmation from "./components/OrderConfirmation";
 
 export default function App() {
   const [cart, setCart] = React.useState<Cart>(initialCart);
-  const [active, setActive] = React.useState(3);
+  const [active, setActive] = React.useState(1);
 
   return (
     <div className="App">
