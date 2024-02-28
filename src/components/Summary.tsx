@@ -12,7 +12,7 @@ export default function Summary({
 }) {
   const cartTotals = getCostStrings(cart);
   return (
-    <div className="Summary grid">
+    <div className="Summary grid-d">
       <StepHeader
         title="Finishing Up"
         desc="Double-check everything looks OK before confirming."

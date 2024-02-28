@@ -1,5 +1,5 @@
 import React from "react";
-import { Cart, addOns, initialCart } from "../constants";
+import { Cart, addOns } from "../constants";
 import StepHeader from "./StepHeader";
 import NavButtons from "./NavButtons";
 import "./AddOns.scss";
@@ -13,7 +13,9 @@ export default function AddOns({
   updateCart: Function;
   updateActiveStep: Function;
 }) {
-  const [selectedAddOns, setSelectedAddOns] = React.useState<string[]>([]);
+  const [selectedAddOns, setSelectedAddOns] = React.useState<string[]>(
+    cart.addOns
+  );
 
   const updateUI = function (name: string) {
     if (selectedAddOns.includes(name)) {
@@ -27,7 +29,7 @@ export default function AddOns({
     }
   };
   return (
-    <div className="AddOns grid">
+    <div className="AddOns grid-d">
       <StepHeader
         title="Pick add-ons"
         desc="Add-ons help enhanve your gaming experience"
@@ -50,7 +52,6 @@ export default function AddOns({
       <NavButtons
         hideButton={false}
         backClick={() => {
-          updateCart(initialCart);
           updateActiveStep(2);
         }}
         nextClick={() => {

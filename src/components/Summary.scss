@@ -1,7 +1,6 @@
 @import "../App.scss";
 
 .Summary {
-  grid-template-rows: $step-header-height auto $step-nav-buttons-height;
   color: $marine-blue;
   .plan-container,
   .subscription ul li,

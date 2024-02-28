@@ -1,8 +1,8 @@
 @import "../App.scss";
 
 .AddOns {
-  grid-template-rows: $step-header-height auto $step-nav-buttons-height;
   form {
+    grid-area: content;
     display: flex;
     flex-direction: column;
     gap: $twenty-px;
@@ -12,6 +12,7 @@
       display: flex;
       align-items: center;
       position: relative;
+      border: 1px solid $cool-grey;
       &:hover {
         border: 1px solid $purple-blue;
         cursor: pointer;

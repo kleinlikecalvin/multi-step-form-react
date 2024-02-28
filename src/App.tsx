@@ -1,19 +1,15 @@
 import React from "react";
 import "./App.scss";
-import { initialCart } from "./constants";
-import UserInfo from "./UserInfo";
-import SelectPlan from "./SelectPlan";
-import AddOns from "./AddOns";
-// import Summary from "./Summary";
-// import OrderConfirmation from "./OrderConfirmation";
+import { Cart, initialCart } from "./constants";
+import UserInfo from "./components/UserInfo";
+import SelectPlan from "./components/SelectPlan";
+import AddOns from "./components/AddOns";
+import Summary from "./components/Summary";
+import OrderConfirmation from "./components/OrderConfirmation";
 
 export default function App() {
-  const [cart, setCart] = React.useState<{
-    plan: string;
-    subscriptionCycle: string;
-    addOns?: string[];
-  }>(initialCart);
-  const [active, setActive] = React.useState(3);
+  const [cart, setCart] = React.useState<Cart>(initialCart);
+  const [active, setActive] = React.useState(2);
 
   return (
     <div className="App">
@@ -23,8 +19,13 @@ export default function App() {
         <StepPreview isActive={active === 3} step={3} details="add-ons" />
         <StepPreview isActive={active === 4} step={4} details="summary" />
       </ol>
-      {/* UserInfo needs error messaging and styling */}
-      {active === 1 && <UserInfo updateActiveStep={setActive} />}
+      {active === 1 && (
+        <UserInfo
+          cart={cart}
+          updateCart={setCart}
+          updateActiveStep={setActive}
+        />
+      )}
       {active === 2 && (
         <SelectPlan
           cart={cart}
@@ -35,13 +36,8 @@ export default function App() {
       {active === 3 && (
         <AddOns cart={cart} updateCart={setCart} updateActiveStep={setActive} />
       )}
-      {/* {active === 4 && (
-        <Summary cart={cart} updateActiveStep={setActive} />
-      )}
-      {active === 5 && (
-        <OrderConfirmation
-        />
-      )} */}
+      {active === 4 && <Summary cart={cart} updateActiveStep={setActive} />}
+      {active === 5 && <OrderConfirmation />}
     </div>
   );
 }
@@ -58,7 +54,7 @@ function StepPreview({
   return (
     <li className="StepPreview">
       <strong className={isActive ? "step active" : "step"}>{step}</strong>
-      <div>
+      <div className="desc">
         <p className="name">step {step}</p>
         <strong className="details">{details}</strong>
       </div>
