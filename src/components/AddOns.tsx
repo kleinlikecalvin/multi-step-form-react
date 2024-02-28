@@ -30,25 +30,28 @@ export default function AddOns({
   };
   return (
     <div className="AddOns grid-d">
-      <StepHeader
-        title="Pick add-ons"
-        desc="Add-ons help enhanve your gaming experience"
-      />
-      <form>
-        {Object.entries(addOns).map(([name, addOn]) => (
-          <AddOn
-            callback={updateUI}
-            selectedAddOns={selectedAddOns}
-            name={name}
-            details={addOn.details}
-            price={
-              cart.subscriptionCycle === "yearly"
-                ? `${addOn.annualCost}/yr`
-                : `${addOn.monthlyCost}/mo`
-            }
-          />
-        ))}
-      </form>
+      <div className="content">
+        <StepHeader
+          title="Pick add-ons"
+          desc="Add-ons help enhanve your gaming experience"
+        />
+        <form>
+          {Object.entries(addOns).map(([name, addOn]) => (
+            <AddOn
+              callback={updateUI}
+              selectedAddOns={selectedAddOns}
+              name={name}
+              details={addOn.details}
+              price={
+                cart.subscriptionCycle === "yearly"
+                  ? `${addOn.annualCost}/yr`
+                  : `${addOn.monthlyCost}/mo`
+              }
+            />
+          ))}
+        </form>
+      </div>
+
       <NavButtons
         hideButton={false}
         backClick={() => {
