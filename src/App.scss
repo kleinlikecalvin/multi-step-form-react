@@ -14,7 +14,7 @@ $border-radius: 10px;
 $font: "Ubuntu", "Helvetica Neue", sans-serif;
 $twenty-px: 20px;
 $step-header-height: 100px;
-$step-nav-buttons-height: 80px;
+$step-nav-buttons-height: 90px;
 
 .App {
   font-family: $font;
@@ -27,6 +27,7 @@ $step-nav-buttons-height: 80px;
   display: grid;
   grid-template-columns: 274px auto;
   margin: 100px auto;
+  position: relative;
   button:hover {
     cursor: pointer;
   }
