@@ -16,4 +16,13 @@
     line-height: 1.5em;
     color: $cool-grey;
   }
+  @media (max-width: 1080px) {
+    position: absolute;
+    background: white;
+    top: 100px;
+    margin: auto 20px;
+    border-radius: $border-radius;
+    height: auto;
+    padding: 80px $twenty-px;
+  }
 }
