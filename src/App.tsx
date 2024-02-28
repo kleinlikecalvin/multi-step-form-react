@@ -9,7 +9,7 @@ import OrderConfirmation from "./components/OrderConfirmation";
 
 export default function App() {
   const [cart, setCart] = React.useState<Cart>(initialCart);
-  const [active, setActive] = React.useState(2);
+  const [active, setActive] = React.useState(3);
 
   return (
     <div className="App">
@@ -17,7 +17,11 @@ export default function App() {
         <StepPreview isActive={active === 1} step={1} details="your info" />
         <StepPreview isActive={active === 2} step={2} details="select plan" />
         <StepPreview isActive={active === 3} step={3} details="add-ons" />
-        <StepPreview isActive={active === 4} step={4} details="summary" />
+        <StepPreview
+          isActive={active === 4 || active === 5}
+          step={4}
+          details="summary"
+        />
       </ol>
       {active === 1 && (
         <UserInfo
