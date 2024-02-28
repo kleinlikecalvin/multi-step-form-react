@@ -12,37 +12,38 @@ export default function Summary({
 }) {
   const cartTotals = getCostStrings(cart);
   return (
-    <div className="Summary grid-d">
-      <StepHeader
-        title="Finishing Up"
-        desc="Double-check everything looks OK before confirming."
-      />
-      <div className="subscription-container">
-        <div className="subscription">
-          <div className="plan-container">
-            <p className="plan">
-              {cartTotals.plan[0]} <button>Change</button>
-            </p>
-            <p className="cost">{cartTotals.plan[1]}</p>
+    <section className="Summary grid-d">
+      <div className="content">
+        <StepHeader
+          title="Finishing Up"
+          desc="Double-check everything looks OK before confirming."
+        />
+        <div className="subscription-container">
+          <div className="subscription">
+            <div className="plan-container">
+              <p className="plan">
+                {cartTotals.plan[0]} <button>Change</button>
+              </p>
+              <p className="cost">{cartTotals.plan[1]}</p>
+            </div>
+            <hr />
+            <ul className="add-ons-container">
+              {cartTotals.addOnsCosts?.map((addOn) => {
+                return (
+                  <li>
+                    {addOn[0]}
+                    <span>{addOn[1]}</span>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-          <hr />
-          <ul className="add-ons-container">
-            {cartTotals.addOnsCosts?.map((addOn) => {
-              return (
-                <li>
-                  {addOn[0]}
-                  <span>{addOn[1]}</span>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <div className="total">
-          <p>{cartTotals.total[0]}</p>
-          <p className="cost">{cartTotals.total[1]}</p>
+          <div className="total">
+            <p>{cartTotals.total[0]}</p>
+            <p className="cost">{cartTotals.total[1]}</p>
+          </div>
         </div>
       </div>
-
       <NavButtons
         isStepFourActive={true}
         backClick={() => {
@@ -52,7 +53,7 @@ export default function Summary({
           updateActiveStep(5);
         }}
       />
-    </div>
+    </section>
   );
 }
 

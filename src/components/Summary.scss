@@ -60,4 +60,20 @@
       font-size: 20px;
     }
   }
+  @media (max-width: 1080px) {
+    .subscription {
+      .plan-container {
+        font-size: 14px;
+      }
+      .add-ons-container {
+        font-size: 14px;
+      }
+    }
+    .total {
+      font-size: 14px;
+      .cost {
+        font-size: 16px;
+      }
+    }
+  }
 }
